@@ -6,15 +6,15 @@ Como experto en ciberseguridad, privacidad de datos y desarrollo de software con
 
 La primera alternativa es utilizar la de-identificación de todo dato personal, confidencial o sensible en las interacciones con LLMs.
 
-La de-identificación (o anonimización) es el proceso de eliminar o modificar información personal identificable (PII por sus siglas en inglés) de un conjunto de datos para proteger la privacidad de las personas. 
+La de-identificación (o anonimización) es el proceso de eliminar o modificar [información personal identificable (PII)](https://en.wikipedia.org/wiki/Personal_data) de un conjunto de datos para proteger la privacidad de las personas. 
 
 Esto se logra eliminando nombres, direcciones u otros datos sensibles que puedan identificar a individuos específicos.
 
 ### Diferencias clave entre conceptos relacionados:
 
-- **Datos anonimizados**: Información que ha sido procesada de manera que no puede relacionarse razonablemente con un individuo identificado o identificable. Bajo regulaciones como GDPR, los datos anonimizados no se consideran datos personales y no están sujetos a las mismas restricciones.
+- **Datos anonimizados**: Información que ha sido procesada de manera que no puede relacionarse razonablemente con un individuo identificado o identificable. Bajo regulaciones como [GDPR](https://gdpr-info.eu/), los datos anonimizados no se consideran datos personales y no están sujetos a las mismas restricciones.
   
-- **Datos pseudonimizados**: Datos donde los identificadores directos (como nombres o números de identificación) se reemplazan por pseudónimos o códigos. Sin embargo, aún pueden ser reidentificables si se combina con información adicional. Bajo GDPR, los datos pseudonimizados siguen siendo considerados datos personales.
+- **Datos pseudonimizados**: Datos donde los identificadores directos (como nombres o números de identificación) se reemplazan por pseudónimos o códigos. Sin embargo, aún pueden ser reidentificables si se combina con información adicional. Bajo [GDPR](https://gdpr-info.eu/), los datos pseudonimizados siguen siendo considerados datos personales.
 
 - **Datos enmascarados**: Técnica donde los datos sensibles se ocultan parcialmente (por ejemplo, mostrando solo los últimos cuatro dígitos de un número de tarjeta de crédito). Los datos originales pueden reconstruirse, por lo que no garantizan anonimato completo.
 
@@ -28,7 +28,7 @@ A continuación, se describe un proceso recomendado paso a paso para anonimizar 
 
 1. **Inventario y clasificación de datos**: Realiza un inventario completo de los datasets candidatos para entrenamiento. Clasifícalos por tipo (estructurados, no estructurados), fuente y sensibilidad.
 
-2. **Identificación de PII, PHI, secretos, credenciales y datos sensibles**: Utiliza herramientas automatizadas (como modelos de reconocimiento de entidades nombradas - NER) y revisiones manuales para detectar información sensible, incluyendo nombres, direcciones, correos electrónicos, números de teléfono, historiales médicos, claves API, contraseñas, etc.
+2. **Identificación de PII, PHI, secretos, credenciales y datos sensibles**: Utiliza herramientas automatizadas (como modelos de [reconocimiento de entidades nombradas - NER](https://en.wikipedia.org/wiki/Named-entity_recognition)) y revisiones manuales para detectar información sensible, incluyendo nombres, direcciones, correos electrónicos, números de teléfono, historiales médicos, claves API, contraseñas, etc.
 
 3. **Evaluación de riesgos de reidentificación**: Evalúa el riesgo de que un atacante pueda reidentificar individuos combinando datos anonimizados con información pública. Considera factores como unicidad de combinaciones de atributos, tamaño del dataset y contexto disponible.
 
@@ -42,7 +42,7 @@ A continuación, se describe un proceso recomendado paso a paso para anonimizar 
 
 5. **Aplicación de transformaciones**: Implementa las técnicas seleccionadas de manera consistente. Asegúrate de que las transformaciones sean reversibles solo bajo controles estrictos si es necesario para auditoría.
 
-6. **Validación de privacidad**: Verifica que los datos transformados cumplan criterios de privacidad, como k-anonimato, l-diversidad o diferencial privacidad. Realiza pruebas de reidentificación simuladas.
+6. **Validación de privacidad**: Verifica que los datos transformados cumplan criterios de privacidad, como [k-anonimato](https://en.wikipedia.org/wiki/K-anonymity), [l-diversidad](https://en.wikipedia.org/wiki/L-diversity) o [diferencial privacidad](https://en.wikipedia.org/wiki/Differential_privacy). Realiza pruebas de reidentificación simuladas.
 
 7. **Validación de utilidad del dato**: Confirma que los datos anonimizados mantengan suficiente utilidad para el entrenamiento del LLM. Evalúa métricas como coherencia semántica, diversidad y rendimiento en tareas downstream.
 
@@ -129,15 +129,15 @@ Incluso en estos casos, considera controles adicionales como encriptación en tr
 
 La anonimización está estrechamente ligada a marcos regulatorios y políticas internas. A continuación, se explica su relación con normativas clave:
 
-- **GDPR / RGPD**: Distingue entre anonimización (datos no personales) y pseudonimización (datos personales con controles adicionales). La anonimización completa permite procesamiento sin base legal específica.
+- **[GDPR / RGPD](https://gdpr-info.eu/)**: Distingue entre anonimización (datos no personales) y pseudonimización (datos personales con controles adicionales). La anonimización completa permite procesamiento sin base legal específica.
 
-- **HIPAA**: Requiere de-identificación para datos de salud protegidos (PHI), con estándares específicos para eliminación de 18 identificadores.
+- **[HIPAA](https://www.hhs.gov/hipaa/index.html)**: Requiere de-identificación para datos de salud protegidos (PHI), con estándares específicos para eliminación de 18 identificadores.
 
-- **CCPA / CPRA**: Enfocado en datos personales de residentes de California, la anonimización puede ayudar a cumplir con derechos de eliminación y no venta.
+- **[CCPA / CPRA](https://oag.ca.gov/privacy/ccpa)**: Enfocado en datos personales de residentes de California, la anonimización puede ayudar a cumplir con derechos de eliminación y no venta.
 
-- **ISO 27001**: Incluye controles para protección de información sensible, incluyendo anonimización en procesos de gestión de riesgos.
+- **[ISO 27001](https://www.iso.org/standard/54534.html)**: Incluye controles para protección de información sensible, incluyendo anonimización en procesos de gestión de riesgos.
 
-- **SOC 2**: Para organizaciones de servicios, la anonimización soporta criterios de seguridad y privacidad.
+- **[SOC 2](https://www.akamai.com/es/glossary/what-is-soc2)**: Para organizaciones de servicios, la anonimización soporta criterios de seguridad y privacidad.
 
 **Aspectos clave a considerar**:
 - **Principio de minimización de datos**: Recopila y procesa solo lo necesario; la anonimización ayuda a reducir el alcance.
@@ -175,11 +175,13 @@ Recuerda que esta no es asesoría legal definitiva. Consulta con tu equipo legal
 - Información general sobre condición médica podría correlacionarse con registros públicos.
 - Recomendación: Usar anonimización completa si el riesgo es alto.
 
+![Ejemplo Visual De-identificacion](https://github.com/xavierventeo/AI4Devs-privacy/blob/main/de-identificacion/res/01_deidentification.jpg)
+
 ## 8. Soluciones para implantar el proceso
 
 ### A. Solución comercial
 
-Una solución comercial típica para anonimización de datos en IA incluye plataformas especializadas como Microsoft Presidio, IBM Watson Knowledge Catalog o soluciones de proveedores como OneTrust o BigID.
+Una solución comercial típica para anonimización de datos en IA incluye plataformas especializadas como [Microsoft Presidio](https://microsoft.github.io/presidio/), [IBM Watson Knowledge Catalog](https://www.ibm.com/products/watson-knowledge-catalog) o soluciones de proveedores como [OneTrust](https://www.onetrust.com/) o [BigID](https://bigid.com/).
 
 **Capacidades esperadas:**
 - Detección automática de PII usando IA y reglas predefinidas.
@@ -187,7 +189,7 @@ Una solución comercial típica para anonimización de datos en IA incluye plata
 - Integración con pipelines de MLOps para procesamiento automático.
 
 **Integración con pipelines de datos o MLOps:**
-- APIs para integración con herramientas como Apache Airflow, Kubeflow o Azure ML.
+- APIs para integración con herramientas como [Apache Airflow](https://airflow.apache.org/), [Kubeflow](https://www.kubeflow.org/) o [Azure ML](https://azure.microsoft.com/en-us/products/machine-learning/).
 - Procesamiento en tiempo real o batch.
 
 **Detección automática de PII:**
@@ -209,7 +211,7 @@ Una solución comercial típica para anonimización de datos en IA incluye plata
 **Criterios para seleccionar proveedor:**
 - Compatibilidad con tu stack tecnológico, certificaciones de seguridad, escalabilidad y soporte para tus regulaciones específicas.
 
-### B. Solución DIY / interna
+### B. Solución Develop Yourself/ interna
 
 Para implementar una solución propia, adopta una arquitectura modular.
 
@@ -218,12 +220,12 @@ Para implementar una solución propia, adopta una arquitectura modular.
 - Componentes separados para detección, transformación y auditoría.
 
 **Componentes principales:**
-- **Detección:** Usa bibliotecas open source como spaCy o Hugging Face Transformers para NER.
-- **Transformación:** Scripts personalizados en Python con librerías como Faker para generación de datos falsos.
-- **Validación:** Herramientas como PySyft para privacidad diferencial.
+- **Detección:** Usa bibliotecas open source como [spaCy](https://spacy.io/) o [Hugging Face Transformers](https://huggingface.co/docs/transformers/index) para NER.
+- **Transformación:** Scripts personalizados en Python con librerías como [Faker](https://faker.readthedocs.io/) para generación de datos falsos.
+- **Validación:** Herramientas como [PySyft](https://github.com/OpenMined/PySyft) para privacidad diferencial.
 
 **Herramientas open source o técnicas posibles:**
-- Expresiones regulares para patrones simples (ej. correos: \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b).
+- [Expresiones regulares](https://docs.python.org/3/library/re.html) para patrones simples (ej. correos: \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b).
 - Modelos NER para detección avanzada.
 - Técnicas de hashing para pseudonimización.
 
@@ -237,11 +239,11 @@ Para implementar una solución propia, adopta una arquitectura modular.
 - Logs en bases de datos seguras con timestamps y metadatos.
 
 **Controles de acceso:**
-- RBAC (Role-Based Access Control) para acceso a datos sensibles.
+- [RBAC (Role-Based Access Control)](https://en.wikipedia.org/wiki/Role-based_access_control) para acceso a datos sensibles.
 
 **Integración con CI/CD, ETL o pipelines de entrenamiento:**
-- Scripts en GitHub Actions o Jenkins para automatización.
-- Integración con frameworks como TensorFlow o PyTorch para preprocesamiento.
+- Scripts en [GitHub Actions](https://github.com/features/actions) o [Jenkins](https://www.jenkins.io/) para automatización.
+- Integración con frameworks como [TensorFlow](https://www.tensorflow.org/) o [PyTorch](https://pytorch.org/) para preprocesamiento.
 
 **Buenas prácticas de seguridad:**
 - Encriptación de datos en reposo y tránsito.
@@ -265,5 +267,4 @@ Para equipos que deseen usar datos internos en LLMs de forma segura, sigue estas
 
 Esta guía proporciona un marco práctico, pero adapta los procesos a tu contexto específico y valida con expertos legales para cumplimiento normativo.
 
-![Ejemplo De-identificacion](https://github.com/LIDR-academy/AI4Devs-privacy/blob/main/privacy-ai-course/de-identificacion/res/01_deidentification.jpg?raw=true)
 
