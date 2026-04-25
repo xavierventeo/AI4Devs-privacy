@@ -175,9 +175,11 @@ Recuerda que esta no es asesoría legal definitiva. Consulta con tu equipo legal
 - Información general sobre condición médica podría correlacionarse con registros públicos.
 - Recomendación: Usar anonimización completa si el riesgo es alto.
 
+## 8. Ejemplo visual
+
 ![Ejemplo Visual De-identificacion](https://github.com/xavierventeo/AI4Devs-privacy/blob/main/de-identificacion/res/01_deidentification.jpg)
 
-## 8. Soluciones para implantar el proceso
+## 9. Soluciones para implantar el proceso
 
 ### A. Solución comercial
 
@@ -250,7 +252,7 @@ Para implementar una solución propia, adopta una arquitectura modular.
 - Entornos aislados para procesamiento.
 - Actualizaciones regulares de modelos y reglas.
 
-## 9. Recomendaciones finales
+## 10. Recomendaciones finales
 
 Para equipos que deseen usar datos internos en LLMs de forma segura, sigue estas buenas prácticas:
 
